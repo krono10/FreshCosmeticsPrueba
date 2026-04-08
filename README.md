@@ -6,13 +6,15 @@ Este proyecto es una propuesta para modernizar la gestión de banners, pasando d
 
 Para poner en marcha el proyecto en un entorno local, sigue estos pasos:
 
-1. Clonar el repositorio.
-2. Instalar las dependencias de PHP con `composer install`.
-3. Configurar el archivo `.env`: Puedes renombrar el archivo `.env.example` a `.env` y ajustar la variable `DATABASE_URL` con tus credenciales locales.
-4. Preparar la base de datos:
+1. **Clonar el repositorio.**
+2. **Instalar las dependencias de PHP**:
+   - Ejecuta `composer install`.
+   - *Nota importante:* Si tras este paso, al intentar ejecutar comandos de Symfony, recibes un error indicando que falta el **"Symfony Runtime"**, es probable que la instalación se haya interrumpido por problemas de certificados SSL o bloqueos de archivos en Windows. Para solucionarlo, fuerza la instalación del componente con:  
+     `composer require symfony/runtime`
+3. **Configurar el archivo `.env.dev`**: Ajusta la variable `DATABASE_URL` con tus credenciales locales.
+4. **Preparar la base de datos**:
    - Ejecuta `php bin/console doctrine:database:create` para crear la base de datos.
    - Ejecuta `php bin/console doctrine:migrations:migrate` para crear la estructura de tablas automáticamente.
-
 ---
 
 ## Decisiones de Arquitectura
@@ -44,8 +46,6 @@ Aunque el sistema es independiente, la integración para el usuario administrado
 2. Método: El panel de Symfony se cargaría dentro de esa sección mediante un acceso directo o un componente integrado.
 3. Seguridad: La API de Symfony validaría la sesión del usuario de PrestaShop para asegurar que solo personal autorizado pueda realizar cambios.
 
-Esta estrategia permite disfrutar de una tecnología moderna y escalable sin obligar al equipo a salir de su entorno de trabajo habitual.
-
 ---
 
 ## Responsabilidad y Valor Diferencial
@@ -54,4 +54,4 @@ Sobre la responsabilidad del Full Stack en Freshly:
 Considero que la tarea principal no es solo escribir código, sino ser el puente entre lo que el negocio necesita y una solución técnica que sea sostenible. Un desarrollador en Freshly debe velar por que la plataforma pueda crecer rápido sin generar problemas de mantenimiento a futuro.
 
 Mi valor diferencial:
-Aporto una mentalidad de "Ingeniero de Producto". No me limito a que una funcionalidad "funcione", sino que me aseguro de que sea intuitiva para quien la usa y eficiente por dentro. Mi capacidad para diseñar sistemas desacoplados como este garantiza que la empresa pueda evolucionar tecnológicamente sin bloqueos ni dependencias obsoletas.
+No me limito a que una funcionalidad "funcione", sino que me aseguro de que sea intuitiva para quien la usa y eficiente por dentro. Mi capacidad para diseñar sistemas desacoplados como este garantiza que la empresa pueda evolucionar tecnológicamente sin bloqueos ni dependencias obsoletas.
